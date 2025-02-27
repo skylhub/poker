@@ -1,0 +1,944 @@
+/* Import Inter font like Fey */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Base styles */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #000000;
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    color: #ffffff;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+/* Update main content wrapper */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Update chat container */
+.chat-container {
+    margin-top: 0;
+    height: calc(100vh - 300px);
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-box {
+    flex-grow: 1;
+    height: 0;
+    min-height: calc(100% - 100px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Header and User Section */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.user-section {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+input, select {
+    padding: 12px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+button:disabled {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.4);
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Update Session Controls */
+.session-controls {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    align-items: start;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.controls-left {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.session-messages {
+    position: relative;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.timer {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* Update Participants Section */
+.participants {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    min-height: 200px;
+}
+
+.participants-list-container,
+.system-messages-container {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 0.75rem;
+    height: 200px;
+    display: flex !important;
+    flex-direction: column;
+}
+
+.participants-list-container h3,
+.system-messages-container h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#participants-list,
+#system-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin: 0;
+    list-style: none;
+    display: block !important;
+}
+
+#participants-list li {
+    padding: 6px 10px;
+    margin-bottom: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    font-size: 13px;
+    color: #ffffff;
+}
+
+/* System Message Styles */
+.system-message {
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    animation: fadeIn 0.3s ease;
+    display: block !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.system-message.join-message {
+    background-color: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.system-message.estimation-message {
+    background-color: rgba(255, 59, 48, 0.1);
+    border: 1px solid rgba(255, 59, 48, 0.2);
+}
+
+.system-message.result-message {
+    background-color: rgba(33, 150, 243, 0.1);
+    border: 1px solid rgba(33, 150, 243, 0.2);
+}
+
+.system-message strong {
+    color: rgba(255, 255, 255, 0.9);
+    margin-right: 8px;
+}
+
+/* Scrollbar Styles */
+#participants-list::-webkit-scrollbar,
+#system-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+#participants-list::-webkit-scrollbar-track,
+#system-messages::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+#participants-list::-webkit-scrollbar-thumb,
+#system-messages::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+#participants-list::-webkit-scrollbar-thumb:hover,
+#system-messages::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Cards Section */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 16px;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Add unique gradients for each card value */
+.card[data-value="1"] {
+    background: linear-gradient(135deg, rgba(71, 118, 230, 0.1) 0%, rgba(142, 84, 233, 0.1) 100%);
+}
+
+.card[data-value="2"] {
+    background: linear-gradient(135deg, rgba(66, 211, 146, 0.1) 0%, rgba(84, 175, 233, 0.1) 100%);
+}
+
+.card[data-value="3"] {
+    background: linear-gradient(135deg, rgba(233, 84, 84, 0.1) 0%, rgba(233, 84, 192, 0.1) 100%);
+}
+
+.card[data-value="5"] {
+    background: linear-gradient(135deg, rgba(255, 184, 76, 0.1) 0%, rgba(233, 84, 84, 0.1) 100%);
+}
+
+.card[data-value="8"] {
+    background: linear-gradient(135deg, rgba(84, 104, 233, 0.1) 0%, rgba(84, 233, 219, 0.1) 100%);
+}
+
+.card[data-value="13"] {
+    background: linear-gradient(135deg, rgba(233, 84, 192, 0.1) 0%, rgba(84, 84, 233, 0.1) 100%);
+}
+
+.card[data-value="21"] {
+    background: linear-gradient(135deg, rgba(84, 233, 160, 0.1) 0%, rgba(184, 233, 84, 0.1) 100%);
+}
+
+.card[data-value="34"] {
+    background: linear-gradient(135deg, rgba(233, 146, 84, 0.1) 0%, rgba(233, 219, 84, 0.1) 100%);
+}
+
+.card[data-value="55"] {
+    background: linear-gradient(135deg, rgba(84, 186, 233, 0.1) 0%, rgba(84, 233, 233, 0.1) 100%);
+}
+
+.card[data-value="89"] {
+    background: linear-gradient(135deg, rgba(186, 84, 233, 0.1) 0%, rgba(233, 84, 132, 0.1) 100%);
+}
+
+/* Enhanced hover effect */
+.card:hover {
+    transform: translateY(-4px);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Add subtle glow effect on hover */
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    transition: opacity 0.3s ease;
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+/* Selected card state */
+.card.selected {
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #000000;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.close {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close:hover {
+    color: #333;
+}
+
+#voting-summary {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 12px;
+}
+
+/* Chat Section */
+.chat-container {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-box {
+    height: 300px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.chat-message {
+    padding: 10px 16px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.chat-message strong {
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+/* System message types */
+.chat-message.join-message {
+    background-color: rgba(76, 175, 80, 0.1);
+    border-color: rgba(76, 175, 80, 0.2);
+}
+
+.chat-message.estimation-message {
+    background-color: rgba(255, 59, 48, 0.1);
+    border-color: rgba(255, 59, 48, 0.2);
+}
+
+.chat-message.result-message {
+    background-color: rgba(33, 150, 243, 0.1);
+    border-color: rgba(33, 150, 243, 0.2);
+}
+
+/* Style system messages differently */
+.chat-message.join-message strong,
+.chat-message.estimation-message strong,
+.chat-message.result-message strong {
+    color: #ffffff;
+    opacity: 0.7;
+}
+
+/* Regular participant messages */
+.chat-message strong {
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+.join-message {
+    background-color: rgba(76, 175, 80, 0.1);
+    border-color: rgba(76, 175, 80, 0.2);
+}
+
+.estimation-message {
+    background-color: rgba(255, 59, 48, 0.1);
+    border-color: rgba(255, 59, 48, 0.2);
+}
+
+.result-message {
+    background-color: rgba(33, 150, 243, 0.1);
+    border-color: rgba(33, 150, 243, 0.2);
+    font-weight: 500;
+}
+
+/* Show chat input container */
+.chat-input-container {
+    display: flex;
+    gap: 12px;
+    margin-top: 1rem;
+}
+
+/* Estimation Lists */
+.estimation-lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.to-estimate, .estimated {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.estimation-item {
+    position: relative;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.delete-btn {
+    background: transparent;
+    color: rgba(255, 59, 48, 0.7);
+    border: none;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.delete-btn:hover {
+    color: #ff3b30;
+    background: transparent;
+    transform: scale(1.1);
+}
+
+.estimate-btn {
+    margin-left: auto;
+    display: block;
+}
+
+.item-content {
+    flex: 1;
+}
+
+.item-content a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.item-content a:hover {
+    text-decoration: underline;
+}
+
+.item-content p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.estimate-badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#add-item-btn {
+    width: 100%;
+    margin-top: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+#add-item-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .chat-container {
+        margin-top: 2rem;
+    }
+
+    .estimation-lists {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Add Item Modal Styles */
+#add-item-modal .modal-content {
+    max-width: 600px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.submit-btn {
+    background: #4CAF50;
+    color: white;
+    flex: 1;
+}
+
+.submit-btn:hover {
+    background: #45a049;
+}
+
+.cancel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    flex: 1;
+}
+
+.cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Item Actions */
+.item-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Update confirmation dialog styling */
+.confirmation-dialog {
+    background: rgba(0, 0, 0, 0.95);
+    padding: 2rem;
+    text-align: center;
+    max-width: 400px;
+}
+
+.confirmation-dialog h3 {
+    color: #ff3b30;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.confirmation-dialog p {
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+}
+
+.confirmation-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.confirmation-actions button {
+    flex: 1;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.confirm-delete {
+    background: #ff3b30;
+    color: white;
+}
+
+.confirm-delete:hover {
+    background: #ff453a;
+    transform: translateY(0);
+}
+
+.cancel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(0);
+}
+
+/* Add these styles to your CSS file */
+@keyframes estimationPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 59, 48, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 59, 48, 0);
+    }
+}
+
+.estimation-item.current-estimation {
+    border-color: rgba(255, 59, 48, 0.4);
+    animation: estimationPulse 2s infinite;
+    background: linear-gradient(135deg, 
+        rgba(255, 59, 48, 0.1) 0%, 
+        rgba(255, 59, 48, 0.05) 100%
+    );
+}
+
+/* Remove bullet points and default padding from lists */
+#to-estimate-list,
+#estimated-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.estimation-item {
+    list-style-type: none;
+}
+
+/* Add styles for the accept button */
+.accept-btn {
+    width: 100%;
+    margin-top: 2rem;
+    padding: 16px;
+    background: #4CAF50;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.accept-btn:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+}
+
+/* Remove notification styles since we're not using them */
+#notifications-container,
+.notification,
+.notification-join,
+.notification-estimation,
+.notification-result {
+    display: none;
+}
+
+/* Floating Messages Container */
+#floating-messages {
+    display: none;
+}
+
+/* Floating Message Styles */
+.floating-message {
+    padding: 8px 16px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    max-width: 400px;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+/* Message types */
+.floating-join {
+    background-color: rgba(76, 175, 80, 0.9);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.floating-estimation {
+    background-color: rgba(255, 59, 48, 0.9);
+    border: 1px solid rgba(255, 59, 48, 0.2);
+}
+
+.floating-result {
+    background-color: rgba(33, 150, 243, 0.9);
+    border: 1px solid rgba(33, 150, 243, 0.2);
+}
+
+/* Animation states */
+.floating-message.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.floating-message.fade-out {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+/* Style system message text */
+.floating-message strong {
+    color: rgba(255, 255, 255, 0.9);
+    margin-right: 8px;
+}
+
+/* Remove floating message styles since we're not using them anymore */
+#floating-messages,
+.floating-message,
+.floating-join,
+.floating-estimation,
+.floating-result {
+    display: none;
+}
+
+/* Remove any display: none that might be hiding system messages */
+.participants-container,
+.participants-box,
+.system-messages-box,
+#system-messages,
+.system-message,
+.chat-container,
+.chat-input-container {
+    display: block !important;
+}
+
+/* Hide chat container since we're using the split view */
+.chat-container,
+.chat-input-container {
+    display: none !important;
+}
+
+/* System Message Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+/* Update chat message styles */
+.chat-message {
+    padding: 10px 16px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+/* System message styles */
+.chat-message.system-message {
+    animation: fadeIn 0.3s ease;
+}
+
+.chat-message.system-message.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+.chat-message.system-message.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+.chat-message.system-message.join-message {
+    background-color: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.chat-message.system-message.estimation-message {
+    background-color: rgba(255, 59, 48, 0.1);
+    border: 1px solid rgba(255, 59, 48, 0.2);
+}
+
+.chat-message.system-message.result-message {
+    background-color: rgba(33, 150, 243, 0.1);
+    border: 1px solid rgba(33, 150, 243, 0.2);
+}
+
+/* Show chat container and input */
+.chat-container,
+.chat-input-container {
+    display: block !important;
+}
+
+/* Remove old participants section since we're not using it */
+.participants {
+    display: none;
+}

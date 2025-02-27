@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poker Planning</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Poker Planning</h1>
+            <!-- Add user management section -->
+            <div class="user-section">
+                <input type="text" id="username" placeholder="Enter your name">
+                <select id="user-role">
+                    <option value="participant">Participant</option>
+                    <option value="observer">Observer</option>
+                </select>
+                <button id="join-session">Join Session</button>
+            </div>
+        </div>
+
+        <!-- Add this after the header and before session controls -->
+        <div class="estimation-lists">
+            <div class="to-estimate">
+                <h3>Items To Estimate</h3>
+                <ul id="to-estimate-list">
+                    <!-- Items will be added here dynamically -->
+                    <li class="estimation-item" data-id="item1">
+                        <div class="item-header">
+                            <div class="item-content">
+                                <a href="https://github.com/org/repo/issues/1" target="_blank">Add user authentication</a>
+                                <p>Implement OAuth2 with Google and GitHub login</p>
+                            </div>
+                            <button class="delete-btn" title="Delete item">×</button>
+                        </div>
+                        <button class="estimate-btn">Estimate</button>
+                    </li>
+                    <li class="estimation-item" data-id="item2">
+                        <div class="item-header">
+                            <div class="item-content">
+                                <a href="https://github.com/org/repo/issues/2" target="_blank">Dark mode support</a>
+                                <p>Add system-wide dark mode with theme switcher</p>
+                            </div>
+                            <button class="delete-btn" title="Delete item">×</button>
+                        </div>
+                        <button class="estimate-btn">Estimate</button>
+                    </li>
+                </ul>
+                <button id="add-item-btn" class="control-btn">+ Add Item</button>
+            </div>
+
+            <div class="estimated">
+                <h3>Estimated Items</h3>
+                <ul id="estimated-list">
+                    <!-- Estimated items will appear here -->
+                    <li class="estimation-item completed" data-id="item0">
+                        <div class="item-content">
+                            <a href="https://github.com/org/repo/issues/0" target="_blank">Setup project structure</a>
+                            <p>Initial project setup and configuration</p>
+                        </div>
+                        <div class="estimate-badge">5 points</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Add session controls -->
+        <div class="session-controls">
+            <div class="timer">Time remaining: <span id="countdown">05:00</span></div>
+            <button id="start-voting" class="control-btn">Start Voting</button>
+            <button id="reveal-cards" class="control-btn">Reveal Cards</button>
+            <button id="reset-voting" class="control-btn">Reset</button>
+        </div>
+
+        <!-- Add participants list -->
+        <div class="participants">
+            <h3>Participants</h3>
+            <ul id="participants-list"></ul>
+        </div>
+
+        <!-- New main-content wrapper -->
+        <div class="main-content">
+            <!-- Poker section -->
+            <div class="poker-section">
+                <div class="cards">
+                    <div class="card" data-value="1">1</div>
+                    <div class="card" data-value="2">2</div>
+                    <div class="card" data-value="3">3</div>
+                    <div class="card" data-value="5">5</div>
+                    <div class="card" data-value="8">8</div>
+                    <div class="card" data-value="13">13</div>
+                    <div class="card" data-value="21">21</div>
+                    <div class="card" data-value="34">34</div>
+                    <div class="card" data-value="55">55</div>
+                    <div class="card" data-value="☕">☕</div>
+                </div>
+            </div>
+
+            <!-- Chat section -->
+            <div class="chat-container">
+                <h2>Chat</h2>
+                <div class="chat-box" id="chat-box"></div>
+                <div class="chat-input-container">
+                    <input type="text" id="chat-input" placeholder="Type a message...">
+                    <button id="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modify modal to show voting results -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Voting Results</h2>
+            <div id="voting-summary">
+                <p>Average: <span id="average-vote"></span></p>
+                <p>Median: <span id="median-vote"></span></p>
+                <div id="participants-votes"></div>
+            </div>
+            <button id="accept-estimate" class="accept-btn">Accept</button>
+        </div>
+    </div>
+
+    <!-- Add this before the closing body tag -->
+    <div id="add-item-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-add-item">&times;</span>
+            <h2>Add New Item</h2>
+            <form id="add-item-form">
+                <div class="form-group">
+                    <label for="item-title">Title</label>
+                    <input type="text" id="item-title" required placeholder="Enter item title">
+                </div>
+                <div class="form-group">
+                    <label for="item-link">Link</label>
+                    <input type="url" id="item-link" required placeholder="https://github.com/org/repo/issues/1">
+                </div>
+                <div class="form-group">
+                    <label for="item-description">Description</label>
+                    <textarea id="item-description" required placeholder="Enter item description"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Add Item</button>
+                    <button type="button" class="cancel-btn" id="cancel-add-item">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add this before the closing body tag -->
+    <div id="delete-confirmation" class="modal">
+        <div class="modal-content confirmation-dialog">
+            <h3>Delete Item</h3>
+            <p>Are you sure you want to delete this item? This action cannot be undone.</p>
+            <div class="confirmation-actions">
+                <button id="confirm-delete" class="confirm-delete">Yes, Delete</button>
+                <button id="cancel-delete" class="cancel-btn">No, Keep It</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

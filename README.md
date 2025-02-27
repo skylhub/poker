@@ -1,2 +1,0 @@
-# poker
-estimation poker page

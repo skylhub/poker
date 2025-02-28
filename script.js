@@ -486,3 +486,36 @@ function acceptEstimation() {
         }
     }
 }
+document.getElementById('join-session').addEventListener('click', function() {
+    const username = document.getElementById('username').value;
+    if (username) {
+        sessionStorage.setItem('username', username);
+        alert(`Welcome, ${username}! You have joined the session.`);
+        // Additional logic to add the user to the participants list
+        const participantsList = document.getElementById('participants-list');
+        const participantItem = document.createElement('li');
+        participantItem.textContent = username;
+        participantsList.appendChild(participantItem);
+    } else {
+        alert('Please enter your name to join the session.');
+    }
+});
+
+// Function to store estimations
+function storeEstimation(itemId, estimation) {
+    const username = sessionStorage.getItem('username');
+    if (username) {
+        let estimations = JSON.parse(localStorage.getItem('estimations')) || {};
+        if (!estimations[username]) {
+            estimations[username] = {};
+        }
+        estimations[username][itemId] = estimation;
+        localStorage.setItem('estimations', JSON.stringify(estimations));
+        alert(`Estimation stored for ${username}: ${estimation}`);
+    } else {
+        alert('Please join the session first.');
+    }
+}
+
+// Example usage: Store estimation for item1
+storeEstimation('item1', 5);

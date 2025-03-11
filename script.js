@@ -40,17 +40,25 @@ const elements = {
 };
 
 // Event Listeners
-document.addEventListener('DOMContentLoaded', () => {
-    elements.joinButton.addEventListener('click', handleJoinSession);
-    elements.startVoting.addEventListener('click', startVoting);
-    elements.revealCards.addEventListener('click', revealVotes);
-    elements.resetVoting.addEventListener('click', resetVoting);
-    elements.closeModal.addEventListener('click', () => elements.modal.style.display = 'none');
-    elements.sendButton.addEventListener('click', sendChatMessage);
-    elements.chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendChatMessage();
-    });
+//document.addEventListener('DOMContentLoaded', () => {
+  //  elements.joinButton.addEventListener('click', handleJoinSession);
+    //elements.startVoting.addEventListener('click', startVoting);
+    //elements.revealCards.addEventListener('click', revealVotes);
+    //elements.resetVoting.addEventListener('click', resetVoting);
+    //elements.closeModal.addEventListener('click', () => elements.modal.style.display = 'none');
+    //elements.sendButton.addEventListener('click', sendChatMessage);
+    //elements.chatInput.addEventListener('keypress', (e) => {
+      //  if (e.key === 'Enter') sendChatMessage();
+//    });
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Handle close button click on estimated items
+    document.querySelectorAll('.estimated .close-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            this.closest('.estimation-item').style.display = 'none';
+        });
+    });
+});
     // Add Item Modal
     document.getElementById('add-item-btn').addEventListener('click', showAddItemModal);
     elements.addItemForm.addEventListener('submit', handleAddItem);

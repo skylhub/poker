@@ -41,17 +41,18 @@ const elements = {
 
 // Event Listeners
 //document.addEventListener('DOMContentLoaded', () => {
-  //  elements.joinButton.addEventListener('click', handleJoinSession);
-    //elements.startVoting.addEventListener('click', startVoting);
-    //elements.revealCards.addEventListener('click', revealVotes);
-    //elements.resetVoting.addEventListener('click', resetVoting);
-    //elements.closeModal.addEventListener('click', () => elements.modal.style.display = 'none');
-    //elements.sendButton.addEventListener('click', sendChatMessage);
-    //elements.chatInput.addEventListener('keypress', (e) => {
-      //  if (e.key === 'Enter') sendChatMessage();
-//    });
-
 document.addEventListener('DOMContentLoaded', function () {
+  
+elements.joinButton.addEventListener('click', handleJoinSession);
+elements.startVoting.addEventListener('click', startVoting);
+elements.revealCards.addEventListener('click', revealVotes);
+elements.resetVoting.addEventListener('click', resetVoting);
+elements.closeModal.addEventListener('click', () => elements.modal.style.display = 'none');
+elements.sendButton.addEventListener('click', sendChatMessage);
+elements.chatInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') sendChatMessage();
+    });
+
     // Handle close button click on estimated items
     document.querySelectorAll('.estimated .close-btn').forEach(button => {
         button.addEventListener('click', function () {

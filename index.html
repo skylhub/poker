@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poker Planning</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Add this CSS inside the head tag -->
+<style>
+    .chat-box {
+        height: 200px; /* Reduced height */
+        overflow-y: auto;
+    }
+    .estimated .close-btn {
+        cursor: pointer;
+        font-size: 20px;
+        color: red;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+</style>
 </head>
 <body>
     <div class="user-section">
@@ -59,20 +74,21 @@
                 <button id="add-item-btn" class="control-btn">+ Add Item</button>
             </div>
 
-            <div class="estimated">
-                <h3>Estimated Items</h3>
-                <ul id="estimated-list">
-                    <!-- Estimated items will appear here -->
-                    <li class="estimation-item completed" data-id="item0">
-                        <div class="item-content">
-                            <a href="https://github.com/org/repo/issues/0" target="_blank">Setup project structure</a>
-                            <p>Initial project setup and configuration</p>
-                        </div>
-                        <div class="estimate-badge">5 points</div>
-                    </li>
-                </ul>
+          <!-- Modify the estimated items section -->
+<div class="estimated">
+    <h3>Estimated Items</h3>
+    <ul id="estimated-list">
+        <!-- Estimated items will appear here -->
+        <li class="estimation-item completed" data-id="item0">
+            <div class="item-content">
+                <a href="https://github.com/org/repo/issues/0" target="_blank">Setup project structure</a>
+                <p>Initial project setup and configuration</p>
             </div>
-        </div>
+            <div class="estimate-badge">5 points</div>
+            <button class="close-btn" title="Close item">×</button>
+        </li>
+    </ul>
+</div>
 
         <!-- Add session controls -->
         <div class="session-controls">

@@ -33,7 +33,7 @@ body {
     margin-top: 2rem;
 }
 
-/* Update chat container */
+/* Add this new class for chat-container */
 .chat-container {
     position: fixed;
     top: 0;
@@ -49,7 +49,7 @@ body {
 
 /* Update the chat-box class */
 .chat-box {
-    height: calc(100vh - 100px); /* Adjust the height as needed */
+    height: calc(100vh - 150px); /* Adjust the height as needed */
     overflow-y: auto;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
@@ -61,7 +61,6 @@ body {
 .main-content {
     margin-right: 320px; /* Adjust the margin to account for the chat container's width */
 }
-
 .chat-box {
     flex-grow: 1;
     height: 0;

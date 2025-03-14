@@ -35,11 +35,31 @@ body {
 
 /* Update chat container */
 .chat-container {
-    margin-top: 0;
-    height: calc(100vh - 300px);
-    min-height: 500px;
-    display: flex;
-    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px; /* Adjust the width as needed */
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Update the chat-box class */
+.chat-box {
+    height: calc(100vh - 100px); /* Adjust the height as needed */
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure main content does not overlap with the chat-container */
+.main-content {
+    margin-right: 320px; /* Adjust the margin to account for the chat container's width */
 }
 
 .chat-box {

@@ -112,6 +112,7 @@ button {
     transition: all 0.2s ease;
     background-color: #ffffff;
     color: #000000;
+    margin: 10px 0; /* Add margin to provide space between buttons */
 }
 
 button:hover {
@@ -519,5 +520,4 @@ button:disabled {
 
 .to-estimate, .estimated {
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border
+    border: 

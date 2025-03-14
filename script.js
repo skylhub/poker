@@ -127,7 +127,8 @@ elements.chatInput.addEventListener('keypress', (e) => {
     // Show chat input container again
     const chatInputContainer = document.querySelector('.chat-input-container');
     if (chatInputContainer) {
-        chatInputContainer.style.display = 'flex';}
+        chatInputContainer.style.display = 'flex';
+    }
 
 // Add Item Modal Functions
 function showAddItemModal() {

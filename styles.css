@@ -31,6 +31,7 @@ body {
     grid-template-columns: 1fr 350px;
     gap: 2rem;
     margin-top: 2rem;
+    margin-right: 320px; /* Ensure main content does not overlap with the chat-container */
 }
 
 /* Add this new class for chat-container */
@@ -56,11 +57,6 @@ body {
     border-radius: 12px;
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.3);
-}
-
-/* Ensure main content does not overlap with the chat-container */
-.main-content {
-    margin-right: 320px; /* Adjust the margin to account for the chat container's width */
 }
 
 /* Header and User Section */
@@ -420,29 +416,6 @@ button:disabled {
 }
 
 /* Chat Section */
-.chat-container {
-    position: fixed;
-    bottom: 20px; /* Adjust the bottom spacing as needed */
-    right: 20px; /* Adjust the right spacing as needed */
-    width: 300px; /* Adjust the width as needed */
-    height: 300px; /* Adjust the height as needed */
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-    z-index: 1000; /* Ensure it stays on top */
-}
-
-.chat-box {
-    height: calc(100% - 60px); /* Adjust the height to fit within the container */
-    overflow-y: auto;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
 .chat-message {
     padding: 10px 16px;
     margin-bottom: 8px;
@@ -520,4 +493,22 @@ button:disabled {
 
 .to-estimate, .estimated {
     background: rgba(255, 255, 255, 0.03);
-    border: 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+/* Add this CSS inside the head tag */
+.chat-box {
+    height: 200px; /* Reduced height */
+    overflow-y: auto;
+}
+
+.estimated .close-btn {
+    cursor: pointer;
+    font-size: 20px;
+    color: red;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
